@@ -1,0 +1,2 @@
+class EmptyMapDownloadError(Exception):
+    pass
