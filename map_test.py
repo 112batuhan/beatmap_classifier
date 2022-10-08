@@ -1,4 +1,3 @@
-from cgi import test
 from raw_parser import get_dataset_info
 from map_data_import import import_categories
 
