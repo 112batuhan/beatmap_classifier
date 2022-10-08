@@ -33,7 +33,6 @@ def get_predictions(beatmap_id):
 
     summed = np.sum(predictions, axis=0)
     final_eval = summed / predictions.shape[0]
-    print(final_eval)
 
     ind = np.argpartition(final_eval, -5)[-5:]
 
