@@ -9,6 +9,9 @@ import osuparser
 def get_dataset_info(id):
 
     path = f"maps/{id}.osu"
+    
+    if not os.path.exists("maps"):
+        os.makedirs("maps")
 
     if not os.path.exists(path):
         url = "https://osu.ppy.sh/osu/" + str(id)

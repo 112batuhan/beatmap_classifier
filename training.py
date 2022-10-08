@@ -22,6 +22,7 @@ y = np.array(encoded_labels)
 
 scaler = MinMaxScaler(feature_range=(0,1))
 X = scaler.fit_transform(dataset["objectdata"].reshape(dataset["objectdata"].shape[0], -1)).reshape(dataset["objectdata"].shape)
+pickle.dump(scaler, open("scaler.p","wb"))
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print(X_train.shape)

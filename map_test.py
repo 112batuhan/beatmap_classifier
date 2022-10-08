@@ -10,10 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 np.set_printoptions(suppress=True)
 
 dataset = pickle.load(open(r"dataset.p", "rb"))
-
-## pickle the scaler in the future
-scaler = MinMaxScaler(feature_range=(0,1))
-X = scaler.fit(dataset["objectdata"].reshape(dataset["objectdata"].shape[0], -1))
+scaler = pickle.load(open(r"scaler.p", "rb"))
 
 beatmap_id = 2502889
 
