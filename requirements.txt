@@ -1,3 +1,4 @@
+fastapi==0.85.0
 numpy==1.21.5
 requests==2.28.1
 scikit_learn==1.1.2
