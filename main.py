@@ -1,7 +1,8 @@
 from custom_exception import EmptyMapDownloadError
 from api_utils import Predicter
 from fastapi import FastAPI, Path, HTTPException
-import json
+import uvicorn
+import os
 
 predicter = Predicter()
 app = FastAPI()
@@ -15,3 +16,6 @@ async def return_all_values(beatmap_id: int = Path(title="Id of the beatmap.")):
     except EmptyMapDownloadError:
         raise HTTPException(
             status_code=404, detail="The requested map is not a valid map")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
