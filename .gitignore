@@ -1,0 +1,6 @@
+/__pycache__
+/.vscode
+/maps
+/model
+/osuparser
+dataset.p
