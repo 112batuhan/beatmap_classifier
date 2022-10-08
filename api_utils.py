@@ -41,6 +41,8 @@ class Predicter:
 
 
 def save_to_db(beatmap_id):
+    #TODO: make a database and save data there. 
+    # This will reduce computational cost in the long run
     pass
 
 

@@ -11,7 +11,7 @@ app = FastAPI()
 async def return_all_values(beatmap_id: int = Path(title="Id of the beatmap.")):
     try:
         result = predicter.predict(beatmap_id, complete_eval=True)
-        return json.dumps(result)
+        return result
     except EmptyMapDownloadError:
         raise HTTPException(
             status_code=404, detail="The requested map is not a valid map")
