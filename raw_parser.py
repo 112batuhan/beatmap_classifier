@@ -3,19 +3,22 @@ from copy import deepcopy
 import requests
 import os
 
+from custom_exception import EmptyMapDownloadError
 import osuparser
 
 
 def get_dataset_info(id):
 
     path = f"maps/{id}.osu"
-    
+
     if not os.path.exists("maps"):
         os.makedirs("maps")
 
     if not os.path.exists(path):
         url = "https://osu.ppy.sh/osu/" + str(id)
         r = requests.get(url, allow_redirects=True)
+        if r.text == "":
+            raise EmptyMapDownloadError("Unvalid beatmap id")
         open(path, "wb").write(r.content)
 
     # parser doesn't reset when you call parse and build
@@ -88,4 +91,4 @@ def get_dataset_info(id):
 if __name__ == "__main__":
 
     dataset = get_dataset_info(10801)
-    #pprint.pprint(dataset)
+    # pprint.pprint(dataset)
