@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 np.set_printoptions(suppress=True)
 
 dataset = pickle.load(open(r"dataset.p", "rb"))
-scaler = pickle.load(open(r"scaler.p", "rb"))
+scaler = pickle.load(open(r"test_data/scaler.p", "rb"))
 
 beatmap_id = 2502889
 
@@ -29,7 +29,7 @@ test_data = np.array(test_data)
 
 scaled_test = scaler.transform(test_data.reshape(test_data.shape[0], -1)).reshape(test_data.shape)
 
-model = keras.models.load_model("model")
+model = keras.models.load_model("test_data/model")
 predictions = model.predict(scaled_test)
 
 summed = np.sum(predictions, axis=0)

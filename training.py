@@ -22,7 +22,7 @@ y = np.array(encoded_labels)
 
 scaler = MinMaxScaler(feature_range=(0,1))
 X = scaler.fit_transform(dataset["objectdata"].reshape(dataset["objectdata"].shape[0], -1)).reshape(dataset["objectdata"].shape)
-pickle.dump(scaler, open("scaler.p","wb"))
+pickle.dump(scaler, open("test_data/scaler.p","wb"))
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print(X_train.shape)
@@ -47,4 +47,4 @@ model.compile(loss='categorical_crossentropy',
 callback = keras.callbacks.EarlyStopping(monitor='loss', patience=5)
 model_info_2 = model.fit(X_train,y_train, epochs=250, batch_size=32,  validation_data=(X_test, y_test), callbacks=[callback])
 
-model.save("model")
+model.save("test_data/model")
